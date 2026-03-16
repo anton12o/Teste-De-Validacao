@@ -1,0 +1,55 @@
+using System;
+
+
+namespace AtividadeC_
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string PessoaNome = "";
+            int idade = 0;
+            int nivel = 0;
+            Console.WriteLine("Olá, por favor insira seu nome: ");
+            PessoaNome = Console.ReadLine();
+            Console.WriteLine("Diga sua idade: ");
+            while(!int.TryParse(Console.ReadLine(), out idade) || idade <= 0 || idade >= 100)
+            {
+                Console.WriteLine("Idade invalida, digite novamente:" );
+            }
+            Console.WriteLine("Para cada nivel existem permissões especificas, antes de escolher, analise-as:");
+            Console.WriteLine("Nivel 1 -> Acesso basico: Só pode consultar chamados\n" +
+                "nivel 2 -> Acesso intermediario: Pode consultar e registrar chamado\n"
+                + "Nivel 3 -> Acesso total: Pode consultar, registrar e deletar chamados\n");
+            Console.WriteLine("Clique ENTER para continuar");
+            Console.ReadLine();
+
+            Console.WriteLine("Qual nivel de acesso deseja possuir de 1 a 3: ");
+
+            while (!int.TryParse(Console.ReadLine(), out nivel) || nivel < 1 || nivel > 3 || (nivel == 3 && idade < 18))
+            {
+
+                if (nivel == 3 && idade < 18)
+                    Console.WriteLine("È necessario ter acima de 18 anos para escolher o nivel, digite um numero valido: ");
+                else
+                    Console.WriteLine("Nivel invalido, digite novamente: ");
+
+            }
+            if (nivel == 1)
+                Console.WriteLine("Acesso basico: so pode consultar chamados.");
+            else if (nivel == 2)
+                Console.WriteLine("Acesso Intermediario: pode consultar e registrar chamados.");
+            else if (nivel == 3)
+                Console.WriteLine("Acesso total: pode consultar, registrar e deletar chamados.");
+            Console.WriteLine("--------------AREA DE ACESSO - T.I------------");
+            Console.WriteLine($"Nome do Tecnico: {PessoaNome}");
+            Console.WriteLine($"Idade: {idade}");
+            Console.WriteLine($"Nivel de Acesso: {nivel}");
+            Console.WriteLine("----------------------------------------------");
+            Console.ReadLine();
+
+
+
+        }
+    }
+}
